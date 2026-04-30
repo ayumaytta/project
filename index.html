@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Maytta</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #000;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid #1f2937;
+      z-index: 1000;
+    }
+
+    .navbar {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-badge {
+      background: #fff;
+      color: #000;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .logo-text {
+      color: #9ca3af;
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: #9ca3af;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: #fff;
+      transition: 0.3s;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      color: #fff;
+      font-size: 34px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      max-width: 650px;
+      margin: 0 auto 45px;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    #beranda {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      color: #fff;
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+      color: #9ca3af;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 580px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background-color: #d1d5db;
+    }
+
+    .btn-secondary {
+      border: 1px solid #9ca3af;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .hero-photo {
+      background: linear-gradient(145deg, #111827, #030712);
+      border: 1px solid #1f2937;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 20px 60px rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 2px solid #fff;
+      background-color: #1f2937;
+      display: block;
+    }
+
+    .project-card img,
+    .certificate-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      background-color: #111827;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: #fff;
+      font-weight: bold;
+      border-bottom: 1px solid #fff;
+      transition: 0.3s;
+    }
+
+    .card-link:hover {
+      color: #d1d5db;
+      border-color: #d1d5db;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .about-card,
+    .project-card,
+    .certificate-card,
+    .social-card {
+      background-color: #030712;
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 24px;
+      transition: 0.3s;
+    }
+
+    .about-card:hover,
+    .project-card:hover,
+    .certificate-card:hover,
+    .social-card:hover {
+      transform: translateY(-6px);
+      border-color: #fff;
+    }
+
+    .about-card h3,
+    .project-card h3,
+    .certificate-card h3,
+    .social-card h3 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .info-list li {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #1f2937;
+      padding-bottom: 8px;
+    }
+
+    .info-list strong {
+      color: #fff;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .project-card p {
+      margin-bottom: 18px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      background-color: #111827;
+      color: #d1d5db;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin: 4px 4px 0 0;
+    }
+
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .certificate-card span {
+      display: inline-block;
+      color: #fff;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .social-card {
+      text-align: center;
+    }
+
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #111827;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .social-card a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 25px 0;
+      text-align: center;
+      color: #9ca3af;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .project-grid,
+      .certificate-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: #000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 35px;
+        transition: 0.3s;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-link {
+        font-size: 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container navbar">
+      <a href="#beranda" class="logo">
+        <span class="logo-badge">MT</span>
+        <span class="logo-text">Portfolio</span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#beranda" class="nav-link">Beranda</a></li>
+        <li><a href="#tentang" class="nav-link">Tentang Saya</a></li>
+        <li><a href="#project" class="nav-link">Project</a></li>
+        <li><a href="#sertifikat" class="nav-link">Sertifikat</a></li>
+        <li><a href="#sosial" class="nav-link">Sosial Media</a></li>
+      </ul>
+
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </header>
+
+  <section id="beranda">
+    <div class="container hero">
+      <div class="hero-content">
+        <h1>Halo, Saya <span>Maytta</span></h1>
+        <p>
+          Saya adalah seorang mahasiswa Universitas Udayana dari program studi Informatika angkatan 2024.
+        </p>
+        <div class="btn-group">
+          <a href="#project" class="btn btn-primary">Lihat Project</a>
+          <a href="#sosial" class="btn btn-secondary">Hubungi Saya</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="images/WhatsApp Image 2026-04-30 at 04.28.49.jpeg" alt="Foto Maytta" />
+      </div>
+    </div>
+  </section>
+
+  <section id="tentang">
+    <div class="container">
+      <h2 class="section-title">Tentang Saya</h2>
+      <p class="section-subtitle">
+        Berikut adalah data diri singkat dan informasi tentang saya.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Data Diri</h3>
+          <ul class="info-list">
+            <li><strong>Nama:</strong> Ni Luh Putu Ayu Maytta Wulandhani</li>
+            <li><strong>Tempat, Tanggal Lahir:</strong> Karangasem, 25 Mei 2006</li>
+            <li><strong>Alamat:</strong> JL.Pertanian, Gang Rangsana No. 25, Pedungan, Denpasar Selatan</li>
+            <li><strong>Email:</strong> ayumaytta@gmail.com</li>
+            <li><strong>No. HP:</strong> 087845347113</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <h3>Deskripsi Singkat</h3>
+          <p>
+           Saya memiliki minat besar dalam bidang teknologi, dengan fokus pada desain grafis dan pengembangan kreativitas visual. Selain itu, saya juga tertarik pada bidang data, khususnya dalam analisis dan pengolahan data. Saya merupakan fungsionaris SIC 2024 pada divisi Public Relations yang masih aktif sampai saat ini serta memiliki pengalaman bekerja pada MH Project Sukabumi sebagai desainer grafis.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="container">
+      <h2 class="section-title">Project</h2>
+      <p class="section-subtitle">
+        Project yang pernah saya buat atau sedang saya kembangkan.
+      </p>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="images/WhatsApp Image 2026-04-30 at 03.31.16(1).jpeg" alt="Project Website Portfolio" />
+          <h3>Sistem Rekomendasi Karir Mahasiswa Informatika Berbasis Knowledge Graph</h3>
+          <p>Website berbasis Streamlit yang memberikan rekomendasi karir menggunakan Knowledge Graph dan visualisasi data.</p>
+          <br />
+          <a href="https://github.com/username/repository-1" target="_blank" class="card-link">Lihat Repository</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sertifikat">
+    <div class="container">
+      <h2 class="section-title">Sertifikat</h2>
+      <p class="section-subtitle">
+        Beberapa sertifikat yang saya miliki sebagai bukti pembelajaran dan pengembangan skill.
+      </p>
+
+      <div class="certificate-grid">
+        <div class="certificate-card">
+          <img src="images/Data Analyst Revou.jpg" alt="Sertifikat Dasar Pemrograman Web" />
+          <h3>Data Analyst Revou</h3>
+          <p>Sertifikat mengikuti kelas Data Analyst di RevoU yang mencakup dasar-dasar analisis data, data cleaning, dan visualisasi data.</p>
+          <span>2026</span>
+        </div>
+
+        <div class="certificate-card">
+          <img src="images/Data Science and AI Machine Learning Dibimbing.jpg" alt="Sertifikat UI/UX Design Dasar" />
+          <h3>Data Science and AI Machine Learning</h3>
+          <p>Sertifikat pembelajaran Data Science dan AI Machine Learning yang meliputi pengolahan data dan pengenalan model machine learning.</p>
+          <span>2026</span>
+        </div>
+
+        <div class="certificate-card">
+          <img src="images/WhatsApp Image 2026-04-30 at 02.58.42.jpeg" alt="Sertifikat JavaScript Fundamental" />
+          <h3>UI/UX Design Special Skill</h3>
+          <p>Sertifikat mengikuti kelas UI/UX Design yang membahas dasar-dasar user interface dan user experience.</p>
+          <span>2026</span>
+        </div>
+
+        <div class="certificate-card">
+          <img src="images/UI_UX Design Dibimbing.jpg" alt="Sertifikat JavaScript Fundamental" />
+          <h3>UI/UX Design Dibimbing</h3>
+          <p>Sertifikat mengikuti program UI/UX Design di Dibimbing yang membahas dasar-dasar perancangan tampilan dan pengalaman pengguna.</p>
+          <span>2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sosial">
+    <div class="container">
+      <h2 class="section-title">Sosial Media</h2>
+      <p class="section-subtitle">
+        Silakan hubungi saya melalui WhatsApp atau Instagram.
+      </p>
+
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-icon">WA</div>
+          <h3>WhatsApp</h3>
+          <p>Hubungi saya untuk kerja sama atau pertanyaan.</p>
+          <a href="https://wa.me/6287845347113" target="_blank">Chat WhatsApp</a>
+        </div>
+
+        <div class="social-card">
+          <div class="social-icon">IG</div>
+          <h3>Instagram</h3>
+          <p>Kunjungi Instagram saya untuk melihat aktivitas dan keseharian saya.</p>
+          <a href="https://instagram.com/maytta.w_" target="_blank">Kunjungi Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Maytta. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
